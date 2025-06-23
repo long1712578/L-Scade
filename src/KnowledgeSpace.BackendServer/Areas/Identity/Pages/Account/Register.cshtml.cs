@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -75,6 +76,9 @@ namespace KnowledgeSpace.BackendServer.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = Input.Email, Email = Input.Email };
+                user.FirstName = "Demo";
+                user.LastName = "Test";
+                user.Dob = DateTime.Now; // Set a default date of birth, adjust as needed
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
