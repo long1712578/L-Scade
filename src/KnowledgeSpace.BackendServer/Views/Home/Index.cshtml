@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Chào mừng tới hệ thống TEDU ID</h1>
+
+    <div class="m-5"></div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h2><a href="/swagger">Development APIs</a></h2>
+        <h2><a href="/.well-known/openid-configuration">openid-configuration</a></h2>
+    }
+</div>
