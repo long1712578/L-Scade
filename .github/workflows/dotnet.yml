@@ -8,7 +8,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     env:
       ASPNETCORE_ENVIRONMENT: Development
     steps:
@@ -23,9 +23,9 @@ jobs:
       run: dotnet restore
 
     - name: Build all project
-      run: dotnet restore --no-restore --configuration Release
+      run: dotnet build --no-restore --configuration Release
 
     - name: Test BackendServer.UnitTest
       run: dotnet test ./Tests/KnowledgeSpace.BackendServer.UnitTest/KnowledgeSpace.BackendServer.UnitTest.csproj --no-build --verbosity normal
     - name: Test ViewModel.UnitTest
-      run: dotnet test ./Tests/KnowledgeSpace.ViewModels.UnitTest/.UnitTest/KnowledgeSpace.ViewModels.UnitTest.csproj --no-build --verbosity normal
+      run: dotnet test ./Tests/KnowledgeSpace.ViewModels.UnitTest/KnowledgeSpace.ViewModels.UnitTest.csproj --no-build --verbosity normal
