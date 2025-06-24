@@ -26,6 +26,6 @@ jobs:
       run: dotnet build --no-restore --configuration Release
 
     - name: Test BackendServer.UnitTest
-      run: dotnet test ./Tests/KnowledgeSpace.BackendServer.UnitTest/KnowledgeSpace.BackendServer.UnitTest.csproj --no-build --verbosity normal
+      run: dotnet test ./test/KnowledgeSpace.BackendServer.UnitTest/KnowledgeSpace.BackendServer.UnitTest.csproj --no-build --verbosity normal
     - name: Test ViewModel.UnitTest
-      run: dotnet test ./Tests/KnowledgeSpace.ViewModels.UnitTest/KnowledgeSpace.ViewModels.UnitTest.csproj --no-build --verbosity normal
+      run: dotnet test ./test/KnowledgeSpace.ViewModels.UnitTest/KnowledgeSpace.ViewModels.UnitTest.csproj --no-build --verbosity normal
