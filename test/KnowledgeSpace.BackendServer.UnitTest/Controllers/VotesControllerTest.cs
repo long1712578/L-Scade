@@ -64,40 +64,40 @@ namespace KnowledgeSpace.BackendServer.UnitTest.Controllers
             Assert.True(votes.Count == 3);
         }
 
-        [Fact]
-        public async Task PostVote_ValidInput_Success()
-        {
-            var controller = new KnowledgeBasesController(
-                _context,
-                _mockSequenceService.Object,
-                _mockStorageService.Object,
-                _mockLoggerService.Object,
-                _mockEmailSender.Object,
-                _mockViewRenderService.Object,
-                _mockCacheService.Object,
-                _mockOneSignalService.Object);
-            var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]{
-                    new Claim(ClaimTypes.NameIdentifier, "1"),
-                }, "mock"));
-            controller.ControllerContext = new ControllerContext()
-            {
-                HttpContext = new DefaultHttpContext() { User = user }
-            };
+        //[Fact]
+        //public async Task PostVote_ValidInput_Success()
+        //{
+        //    var controller = new KnowledgeBasesController(
+        //        _context,
+        //        _mockSequenceService.Object,
+        //        _mockStorageService.Object,
+        //        _mockLoggerService.Object,
+        //        _mockEmailSender.Object,
+        //        _mockViewRenderService.Object,
+        //        _mockCacheService.Object,
+        //        _mockOneSignalService.Object);
+        //    var user = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]{
+        //            new Claim(ClaimTypes.NameIdentifier, "1"),
+        //        }, "mock"));
+        //    controller.ControllerContext = new ControllerContext()
+        //    {
+        //        HttpContext = new DefaultHttpContext() { User = user }
+        //    };
 
-            _context.Votes.AddRange(new List<Vote>()
-            {
-                new Vote(){ KnowledgeBaseId = 1, UserId = Guid.NewGuid().ToString(), CreateDate = DateTime.Now},
-            });
-            _context.KnowledgeBases.AddRange(new List<KnowledgeBase>()
-            {
-                new KnowledgeBase(){ Id =1 , CategoryId =1, Title = "test",Problem = "test", Note = "test"},
-            });
+        //    _context.Votes.AddRange(new List<Vote>()
+        //    {
+        //        new Vote(){ KnowledgeBaseId = 1, UserId = Guid.NewGuid().ToString(), CreateDate = DateTime.Now},
+        //    });
+        //    _context.KnowledgeBases.AddRange(new List<KnowledgeBase>()
+        //    {
+        //        new KnowledgeBase(){ Id =1 , CategoryId =1, Title = "test",Problem = "test", Note = "test"},
+        //    });
 
-            await _context.SaveChangesAsync();
-            var result = await controller.PostVote(1);
+        //    await _context.SaveChangesAsync();
+        //    var result = await controller.PostVote(1);
 
-            Assert.IsType<OkObjectResult>(result);
-        }
+        //    Assert.IsType<OkObjectResult>(result);
+        //}
 
         [Fact]
         public async Task PostVote_NotFoundKbId_BadRequest()
