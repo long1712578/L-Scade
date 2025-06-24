@@ -24,13 +24,8 @@ jobs:
 
     - name: Build all project
       run: dotnet build --no-restore --configuration Release
-
-    - name: Build BackendServer.UnitTest
-      run: dotnet build ./test/KnowledgeSpace.BackendServer.UnitTest/KnowledgeSpace.BackendServer.UnitTest.csproj --configuration Release
-    - name: Build ViewModel.UnitTest
-      run: dotnet build ./test/KnowledgeSpace.ViewModels.UnitTest/KnowledgeSpace.ViewModels.UnitTest.csproj --configuration Release
     
     - name: Test BackendServer.UnitTest
-      run: dotnet test ./test/KnowledgeSpace.BackendServer.UnitTest/KnowledgeSpace.BackendServer.UnitTest.csproj --no-build --verbosity normal
+      run: dotnet test ./test/KnowledgeSpace.BackendServer.UnitTest/KnowledgeSpace.BackendServer.UnitTest.csproj --no-build --configuration Release --verbosity normal
     - name: Test ViewModel.UnitTest
-      run: dotnet test ./test/KnowledgeSpace.ViewModels.UnitTest/KnowledgeSpace.ViewModels.UnitTest.csproj --no-build --verbosity normal
+      run: dotnet test ./test/KnowledgeSpace.ViewModels.UnitTest/KnowledgeSpace.ViewModels.UnitTest.csproj --no-build --configuration Release --verbosity normal
